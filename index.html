@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kawaii Tech Portfolio | Network & SysAdmin</title>
+
+    <!-- Google Fonts: Playfair Display (Luxury/Cute Serif) & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,900;1,600;1,900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cute: {
+                bg: "#fff5f5" /* Putih susu semburat pink/merah ultra soft */,
+                card: "#ffffff" /* Putih bersih untuk kontras */,
+                gray: "#eef2f3" /* Abu-abu terang yang lucu */,
+                red: "#ff3366" /* Merah Ceri Dominan (Vibrant & Cute) */,
+                redDark: "#c21a44" /* Merah gelap untuk border/aksen teks */,
+                pinkLight: "#ffe3e8" /* Pink pastel sangat muda */,
+              },
+            },
+            fontFamily: {
+              serif: ["Playfair Display", "serif"],
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: #fff5f5;
+      }
+      .font-luxury {
+        font-family: "Playfair Display", serif;
+      }
+
+      /* Efek Pop-Art NeoBrutalism Shadow (Bikin kesan lucu kayak stiker timbul) */
+      .pop-shadow {
+        box-shadow: 5px 5px 0px 0px #c21a44;
+      }
+      .pop-shadow-sm {
+        box-shadow: 3px 3px 0px 0px #c21a44;
+      }
+      .pop-shadow-lg {
+        box-shadow: 8px 8px 0px 0px #c21a44;
+      }
+
+      /* Animasi Mengambang Lucu */
+      @keyframes float {
+        0% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(1deg);
+        }
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+      }
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800 antialiased selection:bg-cute-red selection:text-white">
+    <!-- ========================================== -->
+    <!-- NAVBAR SECTION                             -->
+    <!-- ========================================== -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-50 bg-white/95 border-4 border-cute-redDark rounded-2xl px-4 sm:px-5 py-2.5 pop-shadow-sm">
+      <div class="flex items-center justify-between">
+        <!-- Brand Logo & Name -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 aspect-square rounded-xl border-2 border-cute-redDark overflow-hidden shadow-inner bg-cute-gray flex-shrink-0">
+            <img src="/nawra/assets/nawra.bg.png" alt="Logo" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <span class="block text-cute-redDark font-extrabold text-xs sm:text-sm tracking-wide break-words max-w-[160px] sm:max-w-none">NAWRA FAUZILA NATASYA</span>
+            <span class="inline-block text-[9px] sm:text-[10px] bg-cute-pinkLight text-cute-redDark font-bold px-1.5 py-0.5 rounded-md mt-0.5">SysAdmin & Network Junior</span>
+          </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-6 text-xs font-extrabold uppercase tracking-wider ml-auto">
+          <a href="#hero" class="text-slate-600 hover:text-cute-red transition-colors">Beranda</a>
+          <a href="#about" class="text-slate-600 hover:text-cute-red transition-colors">Tentang</a>
+          <a href="#skills" class="text-slate-600 hover:text-cute-red transition-colors">Kompetensi</a>
+          <a href="#certificates" class="text-slate-600 hover:text-cute-red transition-colors">Sertifikat</a>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button onclick="toggleMobileMenu()" id="menuBtn" class="block md:hidden text-cute-redDark p-1 focus:outline-none" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars text-xl transition-transform duration-300"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobileMenu" class="hidden flex-col gap-4 text-center text-xs font-extrabold uppercase tracking-wider pt-4 pb-2 border-t-2 border-dashed border-cute-pinkLight mt-3 transition-all duration-300">
+        <a href="#hero" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 hover:text-cute-red">Beranda</a>
+        <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 hover:text-cute-red">Tentang</a>
+        <a href="#skills" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 hover:text-cute-red">Kompetensi</a>
+        <a href="#certificates" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 hover:text-cute-red">Sertifikat</a>
+      </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- HERO SECTION                               -->
+    <!-- ========================================== -->
+    <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden pt-28 pb-12 sm:pt-32">
+      <!-- Dekorasi Bulat-Bulat Lucu -->
+      <div class="absolute top-24 left-4 w-12 h-12 bg-cute-pinkLight rounded-full border-4 border-cute-redDark animate-float opacity-60 sm:opacity-100 sm:left-12 sm:w-16 sm:h-16"></div>
+      <div class="absolute bottom-12 right-4 w-16 h-16 bg-cute-red/20 rounded-full border-4 border-dashed border-cute-redDark animate-float opacity-60 sm:opacity-100 sm:right-12 sm:bottom-24 sm:w-24 sm:h-24" style="animation-delay: 1.5s"></div>
+
+      <div class="max-w-3xl z-10 space-y-5 sm:space-y-6 w-full">
+        <!-- Status Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 bg-white border-3 border-cute-redDark rounded-full pop-shadow-sm transform -rotate-1 max-w-[90%] sm:max-w-none">
+          <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cute-red opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cute-red"></span>
+          </span>
+          <span class="text-[10px] sm:text-xs font-black tracking-wide text-cute-redDark uppercase truncate">Sistem Aktif dan Siap Membantu! 🚀</span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-luxury text-slate-900 font-black leading-tight px-2">
+          Halo, saya <br class="hidden sm:block" />
+          <span class="inline-block mt-1 sm:mt-2 text-cute-red italic drop-shadow-[2px_2px_0px_#c21a44] break-words max-w-full"> NAWRA FAUZILA NATASYA </span>
+        </h1>
+
+        <!-- Subtitle Description Box -->
+        <div class="max-w-xl mx-auto bg-white border-4 border-cute-redDark p-4 sm:p-5 rounded-2xl pop-shadow-sm mx-2">
+          <p class="text-slate-700 text-xs sm:text-sm md:text-base font-bold leading-relaxed text-justify sm:text-center">Menyusun infrastruktur jaringan yang andal dan mengelola server dengan ketelitian penuh, dedikasi tinggi, dan standar performa terbaik. Ditempa dengan ketertarikan mendalam untuk membangun antarmuka web yang bersih, responsif, dan memanjakan mata. Server terjaga, koneksi pun lancar tiada jeda! 🌐✨</p>
+        </div>
+
+        <!-- Actions Button -->
+        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 px-4">
+          <!-- Tombol Unduh CV -->
+          <a href="#" download="CV_Nawra_Fauzila_Natasya.pdf" class="w-full sm:w-auto px-6 py-3 bg-cute-red hover:bg-cute-redDark text-white font-extrabold text-sm border-3 border-cute-redDark rounded-2xl transition-all transform hover:translate-x-0.5 hover:translate-y-0.5 pop-shadow inline-flex items-center justify-center gap-2">
+            Unduh CV <span class="text-base">📄</span>
+          </a>
+          
+          <!-- Tombol Kenalan Yuk -->
+          <a href="#about" class="w-full sm:w-auto px-6 py-3 bg-white hover:bg-cute-gray text-slate-800 border-3 border-cute-redDark font-extrabold text-sm rounded-2xl transition-all transform hover:translate-x-0.5 hover:translate-y-0.5 pop-shadow inline-flex items-center justify-center gap-2">
+            Kenalan Yuk! <span class="text-base">💌</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ABOUT SECTION                              -->
+    <!-- ========================================== -->
+    <section id="about" class="py-16 sm:py-24 bg-white border-y-4 border-cute-redDark relative">
+      <div class="absolute inset-0 bg-[radial-gradient(#ff3366_1px,transparent_1px)] [background-size:16px_16px] opacity-10"></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            
+          <!-- Left Column: Portrait Photo -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative group w-full max-w-[260px] sm:max-w-sm">
+              <!-- Bingkai Merah Tebal Lucu -->
+              <div class="absolute -inset-2 rounded-3xl bg-cute-red border-4 border-cute-redDark transform rotate-3 group-hover:rotate-0 transition-transform duration-300 pop-shadow"></div>
+              
+              <!-- Kontainer Foto -->
+              <div class="relative bg-cute-gray rounded-2xl overflow-hidden border-4 border-cute-redDark aspect-[3/4]">
+                <img src="/nawra/assets/nawra.bg.png" alt="Nawra Fauzila Natasya" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+              </div>
+            </div>
+          </div>
+            
+          <!-- Right Column: Narrative Info -->
+          <div class="lg:col-span-7 space-y-5 sm:space-y-6 text-center lg:text-left">
+            <div class="space-y-2">
+              <span class="text-[10px] sm:text-xs font-black text-white bg-cute-red border-2 border-cute-redDark px-3 py-1 rounded-md uppercase tracking-wider inline-block transform -rotate-1">// PROFILE</span>
+              <h2 class="text-2xl sm:text-4xl font-luxury text-slate-900 font-black">Kenalan dengan Saya 🎀</h2>
+            </div>
+            
+            <p class="text-slate-700 text-xs sm:text-base leading-relaxed font-bold text-justify lg:text-left">
+              Berfokus pada kompetensi Teknik Komputer dan Jaringan (TKJ), saya mendalami perancangan infrastruktur jaringan komputer serta administrasi sistem server. Keahlian saya berpusat pada optimasi manajemen routing hingga pengelolaan server berbasis Linux. 
+            </p>
+            
+            <!-- Availability Status Mini Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-left">
+              <!-- Kotak Email -->
+              <div class="p-4 bg-cute-bg border-3 border-cute-redDark rounded-2xl pop-shadow-sm flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white border-2 border-cute-redDark flex items-center justify-center text-cute-red flex-shrink-0">
+                  <i class="fa-solid fa-envelope text-sm"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <span class="block text-[9px] sm:text-[10px] text-cute-redDark font-black uppercase tracking-wider">EMAIL</span>
+                  <a class="block text-xs sm:text-sm font-extrabold text-slate-800 hover:text-cute-red transition-colors break-all">
+                    nawra@example.com
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Kotak Alamat -->
+              <div class="p-4 bg-cute-pinkLight border-3 border-cute-redDark rounded-2xl pop-shadow-sm flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white border-2 border-cute-redDark flex items-center justify-center text-cute-red flex-shrink-0">
+                  <i class="fa-solid fa-location-dot text-sm"></i>
+                </div>
+                <div>
+                  <span class="block text-[9px] sm:text-[10px] text-cute-redDark font-black uppercase tracking-wider">ALAMAT</span>
+                  <span class="block text-xs sm:text-sm font-extrabold text-cute-redDark">
+                    Bogor, Jawa Barat
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB CONTENTS CONTAINER                     -->
+    <!-- ========================================== -->
+    <section id="skills" class="py-16 sm:py-24 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-xl mx-auto space-y-3 mb-8 sm:mb-12">
+          <span class="text-[10px] sm:text-xs font-black text-white bg-cute-red border-2 border-cute-redDark px-3 py-1 rounded-md uppercase tracking-wider inline-block">My Playbook</span>
+          <h2 class="text-2xl sm:text-3xl font-luxury text-slate-900 font-black">Kompetensi Saya 🛠️</h2>
+        </div>
+
+        <!-- TABS BUTTON NAVIGATION (Ditambahkan px-2 untuk kenyamanan swipe di HP) -->
+        <div class="flex justify-start sm:justify-center border-b-4 border-cute-redDark mb-8 sm:mb-12 overflow-x-auto no-scrollbar pb-2 px-1">
+          <div class="flex space-x-2 sm:space-x-3 p-1.5 bg-cute-pinkLight border-3 border-cute-redDark rounded-2xl pop-shadow-sm flex-nowrap whitespace-nowrap">
+            <button onclick="switchTab('mikrotik')" id="tab-btn-mikrotik" class="tab-btn px-4 sm:px-6 py-2 text-[11px] sm:text-xs font-black tracking-wider uppercase rounded-xl transition-all duration-300 text-white bg-cute-red border-2 border-cute-redDark">
+              Mikrotik 🎛️
+            </button>
+            <button onclick="switchTab('fo')" id="tab-btn-fo" class="tab-btn px-4 sm:px-6 py-2 text-[11px] sm:text-xs font-black tracking-wider uppercase rounded-xl transition-all duration-300 text-slate-600 border-2 border-transparent hover:text-cute-red">
+              Fiber Optik ⚡
+            </button>
+            <button onclick="switchTab('pc')" id="tab-btn-pc" class="tab-btn px-4 sm:px-6 py-2 text-[11px] sm:text-xs font-black tracking-wider uppercase rounded-xl transition-all duration-300 text-slate-600 border-2 border-transparent hover:text-cute-red">
+              Rakit PC 🖥️
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <!-- TAB 1: MIKROTIK -->
+          <div id="tab-content-mikrotik" class="tab-content transition-all duration-300 transform scale-100 opacity-100 block">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:grid-cols-2 sm:gap-8 max-w-4xl mx-auto">
+              <div onclick="openLightbox('/nawra/assets/mikro1.jpeg', 'Konfigurasi Router Mikrotik — Melakukan konfigurasi pada router mikrotik hingga terhubung ke internet.')" class="group cursor-pointer bg-white border-4 border-cute-redDark rounded-2xl overflow-hidden flex flex-col pop-shadow hover:translate-y-0.5 hover:translate-x-0.5 transition-all">
+                <div class="relative h-48 sm:h-72 w-full border-b-4 border-cute-redDark overflow-hidden bg-slate-100">
+                  <img src="/nawra/assets/mikro1.jpeg" alt="Mikrotik Routing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-cute-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-3 border-cute-redDark flex items-center justify-center shadow">
+                      <i class="fa-solid fa-magnifying-glass-plus text-cute-red text-sm sm:text-base"></i>
+                    </div>
+                  </div>
+                  <span class="absolute bottom-3 left-4 text-[9px] sm:text-[10px] font-black tracking-wider text-cute-red bg-white border-2 border-cute-redDark px-2.5 py-1 rounded-md uppercase">Konfigurasi</span>
+                </div>
+                <div class="pt-3 pb-4 px-4 sm:px-5 flex-1 bg-white space-y-1 text-left">
+                  <h3 class="text-sm sm:text-lg text-slate-900 font-black tracking-tight leading-tight">Konfigurasi Router Mikrotik</h3>
+                  <p class="text-xs text-slate-600 font-medium leading-relaxed">Melakukan konfigurasi pada router mikrotik hingga terhubung ke internet.</p>
+                </div>
+              </div>
+              
+              <div onclick="openLightbox('/nawra/assets/mikro2.jpeg', 'Crimping Kabel Jaringan — Teknik crimping kabel UTP cat6 untuk kebutuhan jaringan.')" class="group cursor-pointer bg-white border-4 border-cute-redDark rounded-2xl overflow-hidden flex flex-col pop-shadow hover:translate-y-0.5 hover:translate-x-0.5 transition-all">
+                <div class="relative h-48 sm:h-72 w-full border-b-4 border-cute-redDark overflow-hidden bg-slate-100">
+                  <img src="/nawra/assets/mikro2.jpeg" alt="Network Security" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-cute-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-3 border-cute-redDark flex items-center justify-center shadow">
+                      <i class="fa-solid fa-magnifying-glass-plus text-cute-red text-sm sm:text-base"></i>
+                    </div>
+                  </div>
+                  <span class="absolute bottom-3 left-4 text-[9px] sm:text-[10px] font-black tracking-wider text-cute-red bg-white border-2 border-cute-redDark px-2.5 py-1 rounded-md uppercase">Crimping</span>
+                </div>
+                <div class="pt-3 pb-4 px-4 sm:px-5 flex-1 bg-white space-y-1 text-left">
+                  <h3 class="text-sm sm:text-lg text-slate-900 font-black tracking-tight leading-tight">Crimping Kabel Jaringan</h3>
+                  <p class="text-xs text-slate-600 font-medium leading-relaxed">Melakukan crimping kabel UTP cat6 untuk kebutuhan jaringan</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: FIBER OPTIK -->
+          <div id="tab-content-fo" class="tab-content transition-all duration-300 transform scale-95 opacity-0 hidden">
+            <div class="max-w-4xl mx-auto">
+              <div onclick="openLightbox('/nawra/assets/fo.jpeg', 'Core Fusion Splicing — Teknik penyambungan serat kaca inti (core) dengan presisi menggunakan alat fusion splicer.')" class="group cursor-pointer bg-white border-4 border-cute-redDark rounded-2xl overflow-hidden flex flex-col md:flex-row pop-shadow hover:translate-y-0.5 hover:translate-x-0.5 transition-all w-full md:max-h-[380px]">
+                <div class="relative h-48 sm:h-64 md:h-auto md:w-[35%] border-b-4 md:border-b-0 md:border-r-4 border-cute-redDark overflow-hidden bg-slate-100 flex-shrink-0">
+                  <img src="/nawra/assets/fo.jpeg" alt="Fusion Splicing" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-cute-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-3 border-cute-redDark flex items-center justify-center shadow">
+                      <i class="fa-solid fa-magnifying-glass-plus text-cute-red text-sm sm:text-base"></i>
+                    </div>
+                  </div>
+                  <span class="absolute bottom-3 left-4 text-[9px] sm:text-[10px] font-black tracking-wider text-cute-red bg-white border-2 border-cute-redDark px-2.5 py-1 rounded-md uppercase">Fiber Optik</span>
+                </div>
+                <div class="p-5 sm:p-6 md:p-8 flex flex-col justify-center md:w-[65%] bg-white text-left space-y-2">
+                  <h3 class="text-sm sm:text-xl text-slate-900 font-black tracking-tight leading-tight group-hover:text-cute-red transition-colors">
+                    Penyambungan Serat Optik
+                  </h3>
+                  <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                    Penyambungan serat kaca inti (core) dengan presisi menggunakan alat fusion splicer.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: RAKIT PC -->
+          <div id="tab-content-pc" class="tab-content transition-all duration-300 transform scale-95 opacity-0 hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+              <div onclick="openLightbox('/nawra/assets/pc1.jpeg', 'Perakitan komponen PC — Menyusun setiap komponen hardware dengan presisi, ketelitian penuh, dan kerapihan pada kabel.')" class="group cursor-pointer bg-white border-4 border-cute-redDark rounded-2xl overflow-hidden flex flex-col pop-shadow hover:translate-y-0.5 hover:translate-x-0.5 transition-all">
+                <div class="relative h-48 sm:h-72 w-full border-b-4 border-cute-redDark overflow-hidden bg-slate-100">
+                  <img src="/nawra/assets/pc1.jpeg" alt="Hardware Assembly" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-cute-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-3 border-cute-redDark flex items-center justify-center shadow">
+                      <i class="fa-solid fa-magnifying-glass-plus text-cute-red text-sm sm:text-base"></i>
+                    </div>
+                  </div>
+                  <span class="absolute bottom-3 left-4 text-[9px] sm:text-[10px] font-black tracking-wider text-cute-red bg-white border-2 border-cute-redDark px-2.5 py-1 rounded-md uppercase">Hardware</span>
+                </div>
+                <div class="pt-3 pb-4 px-4 sm:px-5 flex-1 bg-white space-y-1 text-left">
+                  <h3 class="text-sm sm:text-lg text-slate-900 font-black tracking-tight leading-tight">Perakitan komponen PC</h3>
+                  <p class="text-xs text-slate-600 font-medium leading-relaxed">Menyusun setiap komponen hardware dengan presisi, ketelitian penuh, dan kerapihan pada kabel.</p>
+                </div>
+              </div>
+              
+              <div onclick="openLightbox('/nawra/assets/pc2.jpeg', 'install sistem operasi — Instalasi sistem operasi pada komputer yang sudah di rakit menggunakan ventoy.')" class="group cursor-pointer bg-white border-4 border-cute-redDark rounded-2xl overflow-hidden flex flex-col pop-shadow hover:translate-y-0.5 hover:translate-x-0.5 transition-all">
+                <div class="relative h-48 sm:h-72 w-full border-b-4 border-cute-redDark overflow-hidden bg-slate-100">
+                  <img src="/nawra/assets/pc2.jpeg" alt="Server Deployment" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-cute-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-3 border-cute-redDark flex items-center justify-center shadow">
+                      <i class="fa-solid fa-magnifying-glass-plus text-cute-red text-sm sm:text-base"></i>
+                    </div>
+                  </div>
+                  <span class="absolute bottom-3 left-4 text-[9px] sm:text-[10px] font-black tracking-wider text-cute-red bg-white border-2 border-cute-redDark px-2.5 py-1 rounded-md uppercase">Install OS</span>
+                </div>
+                <div class="pt-3 pb-4 px-4 sm:px-5 flex-1 bg-white space-y-1 text-left">
+                  <h3 class="text-sm sm:text-lg text-slate-900 font-black tracking-tight leading-tight">Install Sistem Operasi</h3>
+                  <p class="text-xs text-slate-600 font-medium leading-relaxed">Instalasi sistem operasi pada komputer yang sudah di rakit menggunakan ventoy.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- CERTIFICATE SECTION                        -->
+    <!-- ========================================== -->
+    <section id="certificates" class="py-16 sm:py-24 relative bg-slate-50 border-t-4 border-cute-redDark">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <!-- Section Header -->
+        <div class="text-center max-w-xl mx-auto space-y-3 mb-10 sm:mb-16">
+          <span class="text-[10px] sm:text-xs font-black text-white bg-cute-red border-2 border-cute-redDark px-3 py-1 rounded-md uppercase tracking-wider inline-block">Sertifikat Saya</span>
+          <h2 class="text-2xl sm:text-3xl font-luxury text-slate-900 font-black">Sertifikat🏆</h2>
+        </div>
+
+        <!-- Certificates Grid Container -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+          
+          <!-- Card 1 -->
+          <div onclick="openLightbox('', '-')" class="group cursor-pointer bg-white border-4 border-cute-redDark rounded-2xl overflow-hidden flex flex-col pop-shadow hover:translate-y-0.5 hover:translate-x-0.5 transition-all">
+            <div class="relative h-48 sm:h-72 w-full border-b-4 border-cute-redDark overflow-hidden bg-slate-100">
+              <img src="" alt="-" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-cute-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-3 border-cute-redDark flex items-center justify-center shadow">
+                  <i class="fa-solid fa-magnifying-glass-plus text-cute-red text-sm sm:text-base"></i>
+                </div>
+              </div>
+              <span class="absolute bottom-3 left-4 text-[9px] sm:text-[10px] font-black tracking-wider text-cute-red bg-white border-2 border-cute-redDark px-2.5 py-1 rounded-md uppercase">-</span>
+            </div>
+            <div class="pt-3 pb-4 px-4 sm:px-5 flex-1 bg-white space-y-1.5 text-left">
+              <h3 class="text-sm sm:text-lg text-slate-900 font-black tracking-tight leading-tight group-hover:text-cute-red transition-colors">---</h3>
+              <p class="text-[10px] font-mono text-slate-500 bg-slate-100 border border-slate-200 inline-block px-2 py-0.5 rounded">-----</p>
+            </div>
+          </div>
+          
+          <!-- Card 2 -->
+          <div onclick="openLightbox('', '-')" class="group cursor-pointer bg-white border-4 border-cute-redDark rounded-2xl overflow-hidden flex flex-col pop-shadow hover:translate-y-0.5 hover:translate-x-0.5 transition-all">
+            <div class="relative h-48 sm:h-72 w-full border-b-4 border-cute-redDark overflow-hidden bg-slate-100">
+              <img src="" alt="-" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-cute-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-3 border-cute-redDark flex items-center justify-center shadow">
+                  <i class="fa-solid fa-magnifying-glass-plus text-cute-red text-sm sm:text-base"></i>
+                </div>
+              </div>
+              <span class="absolute bottom-3 left-4 text-[9px] sm:text-[10px] font-black tracking-wider text-cute-red bg-white border-2 border-cute-redDark px-2.5 py-1 rounded-md uppercase">-</span>
+            </div>
+            <div class="pt-3 pb-4 px-4 sm:px-5 flex-1 bg-white space-y-1.5 text-left">
+              <h3 class="text-sm sm:text-lg text-slate-900 font-black tracking-tight leading-tight group-hover:text-cute-red transition-colors">---</h3>
+              <p class="text-[10px] font-mono text-slate-500 bg-slate-100 border border-slate-200 inline-block px-2 py-0.5 rounded">-----</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FOOTER SECTION                             -->
+    <!-- ========================================== -->
+    <footer class="bg-white border-t-4 border-cute-redDark py-6">
+      <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <!-- Sisi Kiri: Teks Hak Cipta -->
+        <p class="text-xs sm:text-sm font-black text-slate-400 tracking-wider uppercase text-center sm:text-left">
+          &copy; 2026 NAWRA FAUZILA NATASYA.
+        </p>
+
+        <!-- Sisi Kanan: Ikon Sosial Media -->
+        <div class="flex items-center justify-center space-x-4">
+          <!-- GitHub -->
+          <a href="#" target="_blank" class="text-slate-400 hover:text-cute-red transition-colors duration-300">
+            <i class="fa-brands fa-github text-lg sm:text-xl"></i>
+          </a>
+          <!-- Instagram -->
+          <a href="#" target="_blank" class="text-slate-400 hover:text-cute-red transition-colors duration-300">
+            <i class="fa-brands fa-instagram text-lg sm:text-xl"></i>
+          </a>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- GLOBAL LIGHTBOX MODAL                      -->
+    <!-- ========================================== -->
+    <div id="globalLightbox" onclick="closeLightbox(event)" class="fixed inset-0 z-[100] bg-cute-redDark/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+      <!-- Close Button -->
+      <div class="absolute top-4 right-4 sm:top-6 sm:right-6 z-[110]">
+        <button onclick="forceCloseLightbox()" class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-3 border-cute-redDark text-cute-redDark flex items-center justify-center hover:bg-cute-red hover:text-white transition-colors pop-shadow-sm">
+          <i class="fa-solid fa-xmark text-base sm:text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Modal Wrapper Content -->
+      <div class="max-w-3xl w-full flex flex-col items-center space-y-4" onclick="event.stopPropagation()">
+        <div class="bg-white rounded-2xl overflow-hidden border-4 border-cute-redDark max-h-[60vh] sm:max-h-[65vh] flex items-center justify-center pop-shadow-lg mx-2">
+          <img id="lightboxImage" src="" alt="Full Resolution Preview" class="max-w-full max-h-[60vh] sm:max-h-[65vh] object-contain" />
+        </div>
+        <!-- Caption Card -->
+        <div class="w-full max-w-xl bg-white border-3 border-cute-redDark p-3 sm:p-4 rounded-xl pop-shadow-sm mx-4">
+          <p id="lightboxCaption" class="text-xs sm:text-sm text-slate-700 font-bold leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VANILLA JAVASCRIPT SYSTEM                  -->
+    <!-- ========================================== -->
+    <script>
+      // Fungsi Buka Tutup Menu Mobile (Hamburger)
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const icon = document.querySelector("#menuBtn i");
+        
+        if (menu.classList.contains("hidden")) {
+          menu.classList.remove("hidden");
+          menu.classList.add("flex");
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-xmark");
+        } else {
+          menu.classList.remove("flex");
+          menu.classList.add("hidden");
+          icon.classList.remove("fa-xmark");
+          icon.classList.add("fa-bars");
+        }
+      }
+
+      function switchTab(tabId) {
+        const contents = document.querySelectorAll(".tab-content");
+        const buttons = document.querySelectorAll(".tab-btn");
+
+        contents.forEach((content) => {
+          if (!content.classList.contains("hidden")) {
+            content.classList.remove("scale-100", "opacity-100");
+            content.classList.add("scale-95", "opacity-0");
+
+            setTimeout(() => {
+              content.classList.add("hidden");
+            }, 200);
+          }
+        });
+
+        buttons.forEach((btn) => {
+          btn.classList.remove("bg-cute-red", "text-white", "border-cute-redDark");
+          btn.classList.add("text-slate-600", "border-transparent");
+        });
+
+        setTimeout(() => {
+          const activeContent = document.getElementById(`tab-content-${tabId}`);
+          const activeButton = document.getElementById(`tab-btn-${tabId}`);
+
+          if (activeContent && activeButton) {
+            activeContent.classList.remove("hidden");
+            void activeContent.offsetWidth;
+
+            activeContent.classList.remove("scale-95", "opacity-0");
+            activeContent.classList.add("scale-100", "opacity-100");
+
+            activeButton.classList.remove("text-slate-600", "border-transparent");
+            activeButton.classList.add("bg-cute-red", "text-white", "border-cute-redDark");
+          }
+        }, 220);
+      }
+
+      function openLightbox(imgSrc, captionText) {
+        // Jangan buka lightbox kosong jika src belum diset (misal di section sertifikat)
+        if (!imgSrc) return; 
+        
+        const lightbox = document.getElementById("globalLightbox");
+        const imgTarget = document.getElementById("lightboxImage");
+        const captionTarget = document.getElementById("lightboxCaption");
+
+        if (lightbox && imgTarget && captionTarget) {
+          imgTarget.src = imgSrc;
+          captionTarget.textContent = captionText;
+
+          lightbox.classList.remove("pointer-events-none", "opacity-0");
+          lightbox.classList.add("opacity-100");
+          document.body.classList.add("overflow-hidden");
+        }
+      }
+
+      function closeLightbox(event) {
+        const lightbox = document.getElementById("globalLightbox");
+        if (event.target === lightbox) {
+          forceCloseLightbox();
+        }
+      }
+
+      function forceCloseLightbox() {
+        const lightbox = document.getElementById("globalLightbox");
+        if (lightbox) {
+          lightbox.classList.remove("opacity-100");
+          lightbox.classList.add("opacity-0", "pointer-events-none");
+          document.body.classList.remove("overflow-hidden");
+        }
+      }
+    </script>
+  </body>
+</html>
